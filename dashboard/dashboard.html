@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Tienda Electrónica</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="dashboard-styles.css">
+</head>
+<body>
+    <!-- Barra de Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-shopping-cart me-2"></i>Tienda Electrónica
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" onclick="showSection('welcome-section')">
+                            <i class="fas fa-home me-1"></i>Inicio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showSection('users-section')">
+                            <i class="fas fa-users me-1"></i>Usuarios
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showSection('add-user-section')">
+                            <i class="fas fa-user-plus me-1"></i>Agregar Usuario
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showSection('products-section')">
+                            <i class="fas fa-box me-1"></i>Productos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showSection('carts-section')">
+                            <i class="fas fa-shopping-basket me-1"></i>Carritos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../login/login.html">
+                            <i class="fas fa-sign-out-alt me-1"></i>Salir
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <main class="container">
+        <!-- Sección de Bienvenida -->
+        <section id="welcome-section">
+            <h1 class="display-4">
+                <i class="fas fa-handshake me-2"></i>¡Bienvenido a Mi Tienda Electrónica!
+            </h1>
+            <p class="lead">
+                Explora nuestra amplia gama de productos, gestiona usuarios y organiza tus carritos de compras de forma sencilla.
+            </p>
+            <div class="d-grid gap-2 col-md-8 mx-auto">
+                <button class="btn btn-primary btn-lg" onclick="showSection('products-section')">
+                    <i class="fas fa-store me-2"></i>Explorar Productos
+                </button>
+                <button class="btn btn-outline-secondary btn-lg" onclick="showSection('users-section')">
+                    <i class="fas fa-users me-2"></i>Ver Usuarios
+                </button>
+            </div>
+        </section>
+
+        <!-- Sección de Usuarios -->
+        <section id="users-section" class="hidden">
+            <h2 class="mb-4">
+                <i class="fas fa-users me-2"></i>Lista de Usuarios
+            </h2>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="users-list">
+                <!-- Los usuarios se cargarán aquí -->
+            </div>
+        </section>
+
+        <!-- Sección para Agregar Usuario -->
+        <section id="add-user-section" class="hidden">
+            <h2 class="mb-4">
+                <i class="fas fa-user-plus me-2"></i>Agregar Nuevo Usuario
+            </h2>
+            <div class="form-container">
+                <form id="add-user-form">
+                    <div class="mb-3">
+                        <label for="firstName" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="firstName" required>
+                        <div class="invalid-feedback">Por favor, introduce el nombre.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="lastName" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" id="lastName" required>
+                        <div class="invalid-feedback">Por favor, introduce el apellido.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="newEmail" class="form-label">Correo Electrónico</label>
+                        <input type="email" class="form-control" id="newEmail" required>
+                        <div class="invalid-feedback">Por favor, introduce un correo electrónico válido.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="newPassword" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="newPassword" required>
+                        <div class="invalid-feedback">La contraseña no puede estar vacía.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Teléfono</label>
+                        <input type="text" class="form-control" id="phone" placeholder="Ej: 123-456-7890">
+                    </div>
+                    <div class="mb-3">
+                        <label for="age" class="form-label">Edad</label>
+                        <input type="number" class="form-control" id="age" min="1" max="120">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 mt-3">Crear Usuario</button>
+                    <div id="add-user-message" class="mt-3 text-center"></div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Sección de Productos -->
+        <section id="products-section" class="hidden">
+            <h2 class="mb-4">
+                <i class="fas fa-box me-2"></i>Lista de Productos
+            </h2>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="products-list">
+                <!-- Los productos se cargarán aquí -->
+            </div>
+        </section>
+
+        <!-- Sección de Carritos de Compras -->
+        <section id="carts-section" class="hidden">
+            <h2 class="mb-4">
+                <i class="fas fa-shopping-basket me-2"></i>Lista de Carritos de Compras
+            </h2>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="carts-list">
+                <!-- Los carritos se cargarán aquí -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Modales -->
+    <div class="modal fade" id="userDetailModal" tabindex="-1" aria-labelledby="userDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="userDetailModalLabel">Detalles del Usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="userDetailBody">
+                    <!-- Detalles del usuario se cargarán aquí -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="productDetailModal" tabindex="-1" aria-labelledby="productDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productDetailModalLabel">Detalles del Producto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="productDetailBody">
+                    <!-- Detalles del producto se cargarán aquí -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="cartDetailModal" tabindex="-1" aria-labelledby="cartDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartDetailModalLabel">Detalles del Carrito</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="cartDetailBody">
+                    <!-- Detalles del carrito se cargarán aquí -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS con Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JavaScript personalizado -->
+    <script src="dashboard-script.js"></script>
+</body>
+</html>

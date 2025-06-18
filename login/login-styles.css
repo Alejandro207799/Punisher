@@ -1,0 +1,107 @@
+/* ESTILOS GENERALES */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+}
+
+/* ESTILOS PARA LA SECCIÓN DE LOGIN */
+#login-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+#login-card {
+    max-width: 450px;
+    width: 100%;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    background-color: #ffffff;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.card-title {
+    color: #007bff;
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    padding: 12px;
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.form-control {
+    border-radius: 8px;
+    padding: 12px 15px;
+    transition: border-color 0.3s;
+    border: 1px solid #ced4da;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.invalid-feedback {
+    display: none;
+    animation: shake 0.5s;
+}
+
+.input-group-text {
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+}
+
+.input-group-text:hover {
+    background-color: #d1d7dc;
+}
+
+/* ANIMACIONES */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+}
+
+/* ESTILOS RESPONSIVOS */
+@media (max-width: 768px) {
+    #login-card {
+        padding: 20px;
+        margin: 0 15px;
+    }
+    
+    .card-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* ESTILOS PARA ALERTAS */
+.alert {
+    border-radius: 8px;
+}
